@@ -29,18 +29,18 @@ while is_on:
         food.refresh()
         snake.extend()
         scoreboard.increase_score()
-    #detect collision with the food
-    if snake.head.xcor()>280 or snake.head.xcor()<-280 or snake.head.ycor() >280 or snake.head.ycor()<-280:
-        is_on=False
-        scoreboard.game_over()
+    if snake.head.xcor() <= 280 and snake.head.xcor() >= -280 and snake.head.ycor() <= 280 and snake.head.ycor() >= -280:
+        scoreboard.reset()
+        snake.reset()
 
     #detect collision with tail
     #slicing
     for segment in snake.segments[1:]:
 
         if snake.head.distance(segment) < 10:
-            is_on=False
-            scoreboard.game_over()
+            scoreboard.reset()
+            snake.reset()
+
 
         
 
